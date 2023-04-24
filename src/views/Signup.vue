@@ -1,82 +1,100 @@
 <template>
-    <form @submit.prevent="submission">
+  <form @submit.prevent="submission">
 
-        <label>Role:</label>
-      <select v-model="role" required>
+    <label>Role:</label>
+    <select v-model="role" required>
       <option value="Student">Student</option>
       <option value="Professor">Professor</option>
-      </select>  
+    </select>
 
-      <label>Student Number:</label>
-      <input type="stuNum" required v-model="StuNum">
+    <label>Student Number:</label>
+    <input type="stuNum" required v-model="StuNum">
 
-      <label>Email:</label>
-      <input type="email" required v-model="email">
-  
-      <label>Password:</label>
-      <input type="password" required v-model="password">
-      <div v-if="passwordError" class="error">{{ passwordError }}</div>
+    <label>Email:</label>
+    <input type="email" required v-model="email">
 
-      <label>Confirm Password:</label>
-      <input type="confirmPassword" required v-model="confirmPassword">
-      <div v-if="errorMessage" style="color:red" class="error">{{ errorMessage }}</div>
-  
-      <div class="terms">
-          <input type="checkbox" v-model="terms" required>
-          <label>Accept terms and conditions</label>
-      </div>
-  
-      <div class="submit">
-          <button>Sign up</button>
-      </div>
-        <div class="login">
-        <button>
+    <label>Password:</label>
+    <input type="password" required v-model="password">
+    <div v-if="passwordError" class="error">{{ passwordError }}</div>
+
+    <label>Confirm Password:</label>
+    <input type="password" required v-model="confirmPassword">
+    <div v-if="errorMessage" style="color:red" class="error">{{ errorMessage }}</div>
+
+    <div class="terms">
+      <input type="checkbox" v-model="terms" required>
+      <label>Accept terms and conditions</label>
+    </div>
+
+    <div class="submit">
+      <button>Sign up</button>
+    </div>
+    <div class="login">
+      <button>
         <router-link to="/login">Log in</router-link>
-        </button>
-        </div>
-    </form>
-  </template>
-  
-  <script>
-  export default {
-      data() {
-          return {
-            role: '',
-            StuNum: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-            terms: false,
-            passwordError: '',
-            errorMessage: ''
-          };
-      },
-      methods: {
-          submission() {
-              //validate password
-              this.passwordError = this.password.length > 7 ? 
-              '': 'Password must be at least 8 chars long'
+      </button>
+    </div>
+    <div class="modal" v-if="showModal">
+      <div class="modal-content">
+        <h2>Account created!</h2>
+        <p>Your account has been created successfully.</p>
+        <button @click="closeModal">Close</button>
+      </div>
+    </div>
+  </form>
+</template>
+ 
+ <script>
+export default {
+  data() {
+    return {
+      role: "",
+      StuNum: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      terms: false,
+      passwordError: "",
+      errorMessage: "",
+      showModal: false, // add a new data property for the modal
+    };
+  },
+  methods: {
+    submission() {
+      //validate password
+      this.passwordError =
+        this.password.length > 7 ? "" : "Password must be at least 8 chars long";
 
-              if(!this.passwordError) {
-              console.log('email: ', this.email)
-              console.log('password: ', this.password)
-              console.log('terms accepted: ', this.terms)
-              }
-
-          },
-            validateForm() {
-
-                if(this.password != this.confirmPassword) {
-                    this.errorMessage = 'Passwords do not match';
-                }
-                this.errorMessage = '';
-                return true
-            }
-          
+      //validate confirm password
+      if (!this.validateForm()) {
+        return;
       }
-  }
-  </script>
-  
+
+      if (!this.passwordError) {
+        console.log("email: ", this.email);
+        console.log("password: ", this.password);
+        console.log("terms accepted: ", this.terms);
+        this.showModal = true; // set the showModal property to true to display the modal
+      }
+    },
+
+    validateForm() {
+      if (this.password != this.confirmPassword) {
+        this.errorMessage = "Passwords do not match";
+        return false;
+      }
+
+      this.errorMessage = "";
+      return true;
+    },
+
+    closeModal() {
+      this.showModal = false; // set the showModal property to false to hide the modal
+    },
+  },
+};
+</script>
+ 
   <style scoped>
   form {
       max-width: 420px;
@@ -143,4 +161,25 @@
   .login {
     text-align: center
   }
+  .modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+}
   </style>
