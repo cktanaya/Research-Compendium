@@ -37,34 +37,40 @@
         </div>
  
     </form>
+    
   </template>
   
   <script>
   export default {
       data() {
-          return {
-            role: '',
-            StuNum: '',
-            email: '',
-            password: '',
-            terms: false,
-            passwordError: ''
-          }
-      },
+  return {
+    role: '',
+    StuNum: '',
+    email: '',
+    password: '',
+    terms: false,
+    passwordError: '',
+    accountCreated: false
+  }
+},
       methods: {
           submission() {
-              //validate password
-              this.passwordError = this.password.length > 7 ? 
-              '': 'Password must be at least 8 chars long'
-          
-          if(!this.passwordError) {
-              console.log('email: ', this.email)
-              console.log('password: ', this.password)
-              console.log('terms accepted: ', this.terms)
-          }
-          }
+      //validate password
+      this.passwordError = this.password.length > 7 ? 
+      '': 'Password must be at least 8 chars long'
+
+      if(!this.passwordError) {
+        console.log('email: ', this.email)
+        console.log('password: ', this.password)
+        console.log('terms accepted: ', this.terms)
+
+        // set accountCreated to true
+        this.accountCreated = true
+
       }
+    }
   }
+}
   </script>
   
   <style scoped>
@@ -153,5 +159,4 @@
   .signup {
     text-align: center;
   }
-
   </style>
