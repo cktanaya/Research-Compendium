@@ -1,0 +1,103 @@
+<template>
+    <div class="rectangle">
+      <nav>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link> |
+        <router-link to="/article">Articles</router-link> |
+        <a href="#" @click="showModal = true">Logout</a>
+      </nav>
+    </div>
+  
+    <router-view />
+  
+    <div v-if="showModal" class="modal">
+      <div class="modal-content">
+        <p>Are you sure you want to log out?</p>
+        <div class="modal-buttons">
+          <button @click="showModal = false">Cancel</button>
+          <button>
+            <RouterLink to="/login">Logout</RouterLink>
+        </button>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    name: 'Navbar',
+    data() {
+      return {
+        showModal: false
+      }
+    },
+    methods: {
+      logout() {
+        // Your logout logic here
+        console.log('Logged out!')
+        this.showModal = false
+      }
+    }
+  }
+  </script>
+
+<style>
+nav {
+  padding: 30px;
+  position: relative;
+  left: -25px;
+  top: 5px;
+  font-size: 15px;
+  word-spacing: 10px;
+  text-align: center;
+}
+
+nav a {
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+nav a.router-link-exact-active {
+  color: rgb(222, 213, 38);
+}
+
+.rectangle {
+  height: 75px;
+  width: 105%;
+  background: #4a4a4a;
+  position: relative;
+  left: -20px;
+  top: -10px;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #e7e6e0;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.modal-buttons button {
+  margin-left: 10px;
+}
+.modal-router-link-exact-active{
+    color: rgb(222, 213, 38);
+}
+</style>
