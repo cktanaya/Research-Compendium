@@ -1,4 +1,5 @@
 <template>
+  <navbar />
   <form @submit.prevent="submission">
 
     <label>Role:</label>
@@ -45,7 +46,9 @@
 </template>
  
  <script>
+import navbar from '@/views/navbar.vue';
 export default {
+  components: { navbar },
   data() {
     return {
       role: "",
