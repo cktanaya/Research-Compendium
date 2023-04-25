@@ -1,4 +1,5 @@
 <template>
+    <navbar />
     <div class="Rect">
     <div class="rect1">
         <h1>ARTICLES</h1>
@@ -20,7 +21,10 @@
 </template>
 
 <script>
+import navbar from '@/views/navbar.vue';
+
 export default {
+    components: { navbar },
     data() {
         return {
             Articles: []
