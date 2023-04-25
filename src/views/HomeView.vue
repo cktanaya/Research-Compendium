@@ -1,15 +1,22 @@
 <template>
+  <navbar />
   <div class="home">
+    
+    <router-view />
     <div class="block">
       <h1>The Archive:</h1>
       <h2>Web-based Research Compendium - TIP </h2>
     </div>
   </div>
+
+  
 <form>
   <input type="text" v-model="search">
 
   <div class="search">
-    <button>Search</button>
+    <button>
+      <router-link to='/article'>Search</router-link>
+    </button>
   </div>
 </form>
 
@@ -34,9 +41,11 @@
 </template>
 
 <script>
+import navbar from '@/views/navbar.vue';
 
 export default {
   name: 'HomeView',
+  components: { navbar },
   data() {
     return {
       search: ''
