@@ -1,4 +1,5 @@
 <template>
+    <navbar />
     <form @submit.prevent="submission">
 
          
@@ -27,7 +28,9 @@
       </div>
   
       <div class="submit">
-          <button>Login</button>
+          <button>
+            <router-link to='/LoggedHome'>Login</router-link>
+        </button>
       </div>
 
         <div class="signup">
@@ -41,7 +44,9 @@
   </template>
   
   <script>
+  import navbar from '@/views/navbar.vue';
   export default {
+    components: { navbar },
       data() {
   return {
     role: '',
