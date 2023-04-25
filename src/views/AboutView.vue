@@ -1,13 +1,14 @@
 <template>
+  <navbar />
   <div class="rect">
     <div class="about">
       <h1>ABOUT TIP</h1>
       <br>
       <img src="../assets/TIP_Arlegui.jpg">
-      <p>The Technological Institute of the Philippines (T.I.P.) is one of the country’s premier technological, engineering, 
-        and computing higher educational institutions.  It is a private non-sectarian stock school founded on February 8, 1962 by 
-        a group of educators headed by Engineer Demetrio A. Quirino, Jr. and Dr. Teresita U. Quirino. Using an outcomes-based educational 
-        model with its locally and globally accredited programs, T.I.P. allows students to acquire industry-desired qualities and essential 
+      <p>The Technological Institute of the Philippines (T.I.P.) is one of the country’s premier technological, engineering,
+        and computing higher educational institutions.  It is a private non-sectarian stock school founded on February 8, 1962 by
+        a group of educators headed by Engineer Demetrio A. Quirino, Jr. and Dr. Teresita U. Quirino. Using an outcomes-based educational
+        model with its locally and globally accredited programs, T.I.P. allows students to acquire industry-desired qualities and essential
         experiences that better equip them to be effective as soon as they enter the workforce or set up their own business.</p>
       <br>
       <h1>ABOUT US</h1>
@@ -19,8 +20,12 @@
 </template>
 
 <script>
+import navbar from '@/views/navbar.vue';
+
 export default {
-}
+  components: { navbar }
+    }
+  
 </script>
 
 <style>
@@ -29,6 +34,10 @@ export default {
   width: 1415px;
   background: #eee;
   padding: 25px;
+  opacity: 0.8;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #ccc;
 }
 .about {
   text-align: left;
