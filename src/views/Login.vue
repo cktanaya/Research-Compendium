@@ -1,65 +1,49 @@
 <template>
-    <navbar />
-    <form @submit.prevent="submission">
-
-         
-
-      <label>Student Number:</label>
-      <input type="stuNum" required v-model="StuNum">
-
-      <label>Email:</label>
-      <input type="email" required v-model="email">
-
-      <label>Role:</label>
-      <select v-model="role" required>
-      <option value="Student">Student</option>
-      <option value="Professor">Professor</option>
-      </select> 
-  
-      <label>Password:</label>
-      <input type="password" required v-model="password">
-      <div v-if="passwordError" class="error">{{ passwordError }}</div>
-
-
-  
-      <div class="terms">
-          <input type="checkbox" v-model="terms" required>
-          <label>Accept terms and conditions</label>
-      </div>
-  
-      <div class="submit">
-          <button>
-            <router-link to='/LoggedHome'>Login</router-link>
-        </button>
-      </div>
-
-        <div class="signup">
-            <button>
+  <navbar />
+  <form @submit.prevent="submission">
+    <label>Student Number:</label>
+    <input style="margin-bottom: 0.3in" type="stuNum" required v-model="StuNum">
+    <label>Email:</label>
+    <input style="margin-bottom: 0.3in" type="email" required v-model="email">
+    <label>Password:</label>
+    <input style="margin-bottom: 0.3in" type="password" required v-model="password">
+    <div v-if="passwordError" class="error">{{ passwordError }}</div>
+    <div class="terms">
+      <input type="checkbox" required v-model="terms">
+      <label>Accept terms and conditions</label>
+    </div>
+    <div class="submit">
+      <button type="submit">Login</button>
+    </div>
+    <div class="signup">
+      <button>
         <router-link to="/signup">Sign up</router-link>
-               </button>
-        </div>
- 
-    </form>
-    
-  </template>
-  
-  <script>
-  import navbar from '@/views/navbar.vue';
-  export default {
-    components: { navbar },
-      data() {
-  return {
-    role: '',
-    StuNum: '',
-    email: '',
-    password: '',
-    terms: false,
-    passwordError: '',
-    accountCreated: false
-  }
-},
-      methods: {
-          submission() {
+      </button>
+    </div>
+    <div class="admin-login">
+      <button>
+        <router-link to="/ProfLogin">Log in as administrator</router-link>
+      </button>
+    </div>
+  </form>
+</template>
+
+<script>
+import navbar from '@/views/navbar.vue';
+export default {
+  components: { navbar },
+  data() {
+    return {
+      StuNum: '',
+      email: '',
+      password: '',
+      terms: false,
+      passwordError: '',
+      accountCreated: false
+    }
+  },
+  methods: {
+    submission() {
       //validate password
       this.passwordError = this.password.length > 7 ? 
       '': 'Password must be at least 8 chars long'
@@ -72,11 +56,14 @@
         // set accountCreated to true
         this.accountCreated = true
 
+        // navigate to home page
+        this.$router.push('/loggedhome')
       }
     }
   }
 }
-  </script>
+</script>
+
   
   <style scoped>
   form {
@@ -164,4 +151,20 @@
   .signup {
     text-align: center;
   }
+  .admin-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0.5rem;
+}
+.admin-login button {
+  background: #ffdd00;
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 5px;
+  color: rgb(0, 0, 0);
+  border-radius: 20px;
+}
+
   </style>
