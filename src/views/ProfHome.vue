@@ -1,59 +1,87 @@
 <template>
-    <navbar />
+  <div>
+    <loggednav />
     <div class="home">
-      
       <router-view />
       <div class="block">
         <h1>The Archive:</h1>
-        <h2>Web-based Research Compendium - TIP </h2>
+        <h2>Web-based Research Compendium - TIP</h2>
       </div>
     </div>
-  
-    
-  <form>
-    <input type="text" v-model="search">
-  
-    <div class="search">
-      <button>
-        <router-link to='/article'>Search</router-link>
-      </button>
+
+    <form>
+      <input type="text" v-model="search" />
+
+      <div class="search">
+        <button>
+          <router-link to="/article">Search</router-link>
+        </button>
+      </div>
+    </form>
+
+    <div class="head">
+      <h1>New Articles</h1>
     </div>
-  </form>
-  
-  <div class="head">
-    <h1>New Articles</h1>
+
+    <div class="articles">
+      <div class="Article1">
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quaerat harum optio quis magnam odit
+          qui ex expedita, necessitatibus vel provident, iure minima. Quis atque repellendus, unde consequuntur
+          pariatur recusandae.
+        </p>
+      </div>
+
+      <div class="Article2">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum in praesentium nobis expedita ratione
+          natus pariatur beatae, rerum cupiditate et doloremque, labore fugiat iste provident vitae vel, incidunt
+          explicabo enim.
+        </p>
+      </div>
+
+      <div class="Article3">
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam numquam cumque unde saepe nihil voluptas
+          fuga inventore blanditiis, recusandae necessitatibus quos veniam facere amet magnam, minima labore
+          excepturi facilis esse.
+        </p>
+      </div>
+
+      <button class="plus-btn" @click="showModal = true">+</button>
+
+      <!-- Modal -->
+      <div v-if="showModal" class="modal" style="left: calc(50% - 200px); top: 60px;">
+        <div class="modal-content">
+          <span class="close" @click="showModal = false">&times;</span>
+          <div class="modal-actions">
+            <router-link to="/article">
+              <button>Publish a new article</button>
+            </router-link>
+            <router-link to="/article">
+              <button>Edit an existing article</button>
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <div class="articles">
-    <div class="Article1">
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quaerat harum optio quis magnam odit qui ex expedita, necessitatibus vel provident, iure minima. Quis atque repellendus, unde consequuntur pariatur recusandae.</p>
-    </div>
-  
-    <div class="Article2">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum in praesentium nobis expedita ratione natus pariatur beatae, rerum cupiditate et doloremque, labore fugiat iste provident vitae vel, incidunt explicabo enim.</p>
-    </div>
-    
-    <div class="Article3">
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam numquam cumque unde saepe nihil voluptas fuga inventore blanditiis, recusandae necessitatibus quos veniam facere amet magnam, minima labore excepturi facilis esse.</p>
-    </div>
-    <button class="plus-btn">+</button>
-  </div>
-  
-  </template>
-  
-  <script>
-  import navbar from '@/views/navbar.vue';
-  
-  export default {
-    name: 'HomeView',
-    components: { navbar },
-    data() {
-      return {
-        search: ''
-      }
-    }
-  }
-  </script>
+</template>
+
+<script>
+import loggednav from '@/views/loggednav.vue'
+
+export default {
+  name: "HomeView",
+  components: { loggednav },
+  data() {
+    return {
+      search: "",
+      showModal: false,
+    };
+  },
+};
+</script>
   
   <style scoped>
   div.block {
@@ -131,13 +159,25 @@
     border-color: yellow;
   }
   .plus-btn {
-  display: inline-block;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background-color: yellow;
   border: none;
-  margin-top: auto;
-  margin-left: 40px;
+  position: fixed;
+  bottom: 20px; 
+  right: calc(20px + 5%); 
+  z-index: 9999;
+}
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4)
 }
   </style>
