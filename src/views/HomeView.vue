@@ -62,42 +62,37 @@ div.block {
   border-radius: 20px;
   background: #5d5d5d;
   color: #fff;
-  text-align: center;
-  text-justify: inherit;
   padding: 10px;
-  opacity: 0.8;
+  opacity: 0.7;
 }
-
 input {
   margin: 50px;
-  border-radius: 10px;
-  height: 20px;
+  border-radius: 20px;
+  height: 35px;
   width: 500px;
   
 }
-
 button{
   margin: 0px 0px 200px ;
+  height: 25px;
   width: 150px;
   border-radius: 10px;
   background-color: rgb(255, 255, 106);
 }
-
 .head h1 {
   text-decoration: underline;
+  position: relative;
+  z-index: 1;
 }
-
 .articles {
   height: 500px;
   width: 105%;
-  background-color: #eee;
   display: flex;
   margin: 0 0 0;
   padding-top: 100px;
   position: relative;
   left: -10px;
 }
-
 .Article1 {
   height: 250px;
   width: 250px;
@@ -110,7 +105,6 @@ button{
   border: 2px solid;
   border-color: yellow;
 }
-
 .Article2 {
   height: 250px;
   width: 250px;
@@ -123,7 +117,6 @@ button{
   border: 2px solid;
   border-color: yellow;
 }
-
 .Article3 {
   height: 250px;
   width: 250px;
@@ -136,5 +129,4 @@ button{
   border: 2px solid;
   border-color: yellow;
 }
-
 </style>
