@@ -21,6 +21,11 @@
         </div>
       </div>
     </div>
+    <router-view v-slot="{ Component }">
+      <transition name="route" mode="out-in">
+        <component :is="Component"></component>
+      </transition>
+    </router-view>
   </template>
   
   <script>
@@ -99,5 +104,12 @@ nav a.router-link-exact-active {
 }
 .modal-router-link-exact-active{
     color: rgb(222, 213, 38);
+}
+.route-enter-from, .route-leave-to {
+  opacity: 0;
+  transform: translateX(100px);
+}
+.route-enter-active, .route-leave-active {
+  transition: all 0.3s ease-out;
 }
 </style>
