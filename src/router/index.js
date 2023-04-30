@@ -5,6 +5,11 @@ import Article from '../views/Article.vue'
 import ArticleDetails from '../views/Articles/ArticleDetails.vue'
 import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
+import Navbar from '../views/navbar.vue'
+import LoggedNav from '../views/loggednav.vue'
+import LoggedHome from '../views/loggedHome.vue'
+import ProfHome from '../views/ProfHome.vue'
+import ProfLogin from '../views/ProfLogin.vue'
 
 const routes = [
   {
@@ -13,9 +18,34 @@ const routes = [
     component: HomeView
   },
   {
+    path: '/profhome',
+    name: 'profhome',
+    component:ProfHome
+  },
+  {
+    path: '/proflogin',
+    name: 'proflogin',
+    component:ProfLogin
+  },
+  {
     path: '/about',
     name: 'about',
     component:AboutView
+  },
+  {
+    path: '/navbar',
+    name: 'navbar',
+    component:Navbar
+  },
+  {
+    path: '/loggednav',
+    name: 'loggednav',
+    component:LoggedNav
+  },
+  {
+    path: '/loggedhome',
+    name: 'loggedHome',
+    component:LoggedHome
   },
   {
     path: '/login',
