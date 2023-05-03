@@ -10,6 +10,7 @@ import LoggedNav from '../views/loggednav.vue'
 import LoggedHome from '../views/loggedHome.vue'
 import ProfHome from '../views/ProfHome.vue'
 import ProfLogin from '../views/ProfLogin.vue'
+import AddingArticles from '../views/AddingArticles.vue'
 
 const routes = [
   {
@@ -26,6 +27,11 @@ const routes = [
     path: '/proflogin',
     name: 'proflogin',
     component:ProfLogin
+  },
+  {
+    path: '/addingarticles',
+    name: 'addingarticles',
+    component:AddingArticles
   },
   {
     path: '/about',
