@@ -69,7 +69,7 @@
   };
   </script>
   
-  <style>
+  <style scoped>
   form {
     max-width: 100%;
     max-height: 100%;
