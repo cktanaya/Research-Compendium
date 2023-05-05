@@ -5,6 +5,11 @@
         <router-link to="/about">About</router-link> |
         <router-link to="/article">Articles</router-link> |
         <a href="#" @click="showModal = true">Logout</a>
+        <div class="settings">
+          <RouterLink to="/settings">
+        <img src="../assets/settings.png" alt="Settings" />
+      </RouterLink>
+      </div>
       </nav>
     </div>
   
@@ -85,6 +90,7 @@ nav a.router-link-exact-active {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
 }
 
 .modal-content {
@@ -112,4 +118,17 @@ nav a.router-link-exact-active {
 .route-enter-active, .route-leave-active {
   transition: all 0.3s ease-out;
 }
+.settings {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 25px;
+  right: 60px;
+}
+
+.settings img {
+  height: 100%;
+  width: 100%;
+}
+
 </style>
