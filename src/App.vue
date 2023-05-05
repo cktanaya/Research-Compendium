@@ -1,14 +1,7 @@
 <template>
   <meta name="viewport" content="width = device-width, initial-scale=1"> 
   
-    <div class="rectangle">
-      <nav>
-       <router-link to="/">Home</router-link> |
-       <router-link to="/about">About</router-link> |
-       <router-link to="/article">Articles</router-link> |
-       <router-link to="/login">Login</router-link> 
-      </nav>
-    </div>
+  
   <router-view/>
 
   <div class="footer">
