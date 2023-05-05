@@ -11,6 +11,7 @@ import LoggedHome from '../views/loggedHome.vue'
 import ProfHome from '../views/ProfHome.vue'
 import ProfLogin from '../views/ProfLogin.vue'
 import AddingArticles from '../views/AddingArticles.vue'
+import settings from '../views/settings.vue'
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component:AboutView
+  },
+  {
+    path: '/settings',
+    name: 'settings',
+    component:settings
   },
   {
     path: '/navbar',
