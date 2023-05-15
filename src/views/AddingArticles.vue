@@ -1,73 +1,76 @@
 <template>
-    <div>
-      <loggednav />
-      <form @submit.prevent="submitForm">
-        <div>
-          <label for="research-title">Research Title:</label>
-          <input type="text" id="research-title" required v-model="form.researchTitle" />
-        </div>
-        <div>
-          <label for="publication-date">Publication Date:</label>
-          <input type="date" id="publication-date" required v-model="form.publicationDate" />
-        </div>
-        <div>
-          <label for="author">Author:</label>
-          <input type="text" id="author" required v-model="form.author" />
-        </div>
-        <div>
-          <label for="department">Department:</label>
-          <input type="text" id="department" required v-model="form.department" />
-        </div>
-        <div>
-          <label for="keywords">Keywords:</label>
-          <input type="text" id="keywords" required v-model="form.keywords" />
-        </div>
-        <div style="position: relative;">
-          <label for="doi">DOI:</label>
-          <input type="text" id="doi" required v-model="form.doi" />
-          <button class="publish-button" type="submit">Publish</button>
-        </div>
-      </form>
-  
-      <div class="modal" v-if="showModal" @click="hideModal">
-        <div class="modal-content">
-          <p>Publish Success! The users can now view <br> the article in the Articles Page.</p>
-        </div>
+  <div>
+    <loggednav />
+    <form @submit.prevent="submitForm">
+      <div>
+        <label for="research-title">Research Title:</label>
+        <input type="text" id="research-title" required v-model="form.researchTitle" />
+      </div>
+      <div>
+        <label for="publication-date">Publication Date:</label>
+        <input type="date" id="publication-date" required v-model="form.publicationDate" />
+      </div>
+      <div>
+        <label for="author">Author:</label>
+        <input type="text" id="author" required v-model="form.author" />
+      </div>
+      <div>
+        <label for="department">Department:</label>
+        <input type="text" id="department" required v-model="form.department" />
+      </div>
+      <div>
+        <label for="keywords">Keywords:</label>
+        <input type="text" id="keywords" required v-model="form.keywords" />
+      </div>
+      <div style="position: relative;">
+        <label for="doi">DOI:</label>
+        <input type="text" id="doi" required v-model="form.doi" />
+        <button class="publish-button" type="submit">Publish</button>
+      </div>
+    </form>
+
+    <div class="modal" v-if="showModal" @click="hideModal">
+      <div class="modal-content">
+        <p>Publish Success! The users can now view <br> the article in the Articles Page.</p>
       </div>
     </div>
-  </template>
-  
-  <script>
-  import loggednav from '@/views/loggednav.vue'
-  
-  export default {
-    name: "AddingArticles",
-    components: { loggednav },
-    data() {
-      return {
-        form: {
-          researchTitle: '',
-          publicationDate: '',
-          author: '',
-          department: '',
-          keywords: '',
-          doi: '',
-        },
-        showModal: false,
-      };
-    },
-    methods: {
-      submitForm() {
-        console.log(this.form);
-        // Do something with the form data, e.g. submit to a server
-        this.showModal = true;
+  </div>
+</template>
+
+<script>
+import loggednav from "@/views/loggednav.vue";
+
+export default {
+  name: "AddingArticles",
+  components: { loggednav },
+  data() {
+    return {
+      form: {
+        researchTitle: "",
+        publicationDate: "",
+        author: "",
+        department: "",
+        keywords: "",
+        doi: "",
       },
-      hideModal() {
-        this.showModal = false;
-      },
+      showModal: false,
+    };
+  },
+  methods: {
+    submitForm() {
+      console.log(this.form);
+      // Do something with the form data, e.g. submit to a server
+      this.showModal = true;
+      setTimeout(() => {
+        this.$router.push("/ProfHome");
+      }, 2000); // Redirect after 2 seconds
     },
-  };
-  </script>
+    hideModal() {
+      this.showModal = false;
+    },
+  },
+};
+</script>
   
   <style scoped>
   form {
