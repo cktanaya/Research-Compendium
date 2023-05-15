@@ -48,24 +48,24 @@
         </p>
       </div>
 
-      <button class="plus-btn" @click="showModal = true">+</button>
+      <button class="plus-btn" @click="showModal = !showModal">+</button>
 
       <!-- Modal -->
-      <div v-if="showModal" class="modal" style="left: calc(50% - 200px); top: 60px;">
-        <div class="modal-content">
-          <span class="close" @click="showModal = false">&times;</span>
-          <div class="modal-actions">
-            <router-link to="/article">
-              <button>Publish a new article</button>
-            </router-link>
-            <router-link to="/article">
-              <button>Edit an existing article</button>
-            </router-link>
-          </div>
-        </div>
-      </div>
+      <div v-if="showModal" class="modal" @click.self="showModal = false">
+  <div class="modal-content">
+    <span class="close" @click="showModal = false">&times;</span>
+    <div class="modal-actions">
+      <router-link to="/addingarticles">
+        <button class="Publish">Publish a new article</button>
+      </router-link>
+      <router-link to="/article">
+        <button class="Edit">Edit an existing article</button>
+      </router-link>
     </div>
   </div>
+</div>
+  </div>
+</div>
 </template>
 
 <script>
@@ -79,9 +79,26 @@ export default {
       search: "",
       showModal: false,
     };
+  }, 
+  methods: {
+    closeModal(event) {
+      // Check if the target of the click event is inside the modal or the plus button
+      if (!event.target.closest(".modal-content") && !event.target.closest(".plus-btn")) {
+        this.showModal = false;
+      }
+    },
+  },
+  mounted() {
+    // Add a click event listener to the document
+    document.addEventListener("click", this.closeModal);
+  },
+  beforeDestroy() {
+    // Remove the click event listener when the component is destroyed
+    document.removeEventListener("click", this.closeModal);
   },
 };
 </script>
+
   
   <style scoped>
   div.block {
@@ -165,19 +182,28 @@ export default {
   background-color: yellow;
   border: none;
   position: fixed;
-  bottom: 20px; 
+  bottom: 5px; 
   right: calc(20px + 5%); 
   z-index: 9999;
 }
+
 .modal {
-  display: block; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4)
-}
+    position: fixed;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-content {
+    padding: 10x;
+    border-radius: 5px;
+    max-width: 300px;
+    max-height: 50px;
+  }
   </style>
